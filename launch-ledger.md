@@ -17,6 +17,8 @@
 - Site: https://speedranger.github.io/agent-qa-black-box/
 - Request form: https://github.com/SpeedRanger/agent-qa-black-box/issues/new?template=agent_run_autopsy.yml
 - Public launch issue: https://github.com/SpeedRanger/agent-qa-black-box/issues/1
+- Product Hunt submit handoff: https://speedranger.github.io/agent-qa-black-box/product-hunt-submit-handoff-2026-06-04.md
+- Revenue sprint: https://speedranger.github.io/agent-qa-black-box/revenue-sprint-2026-06-04.md
 - Product Hunt thumbnail: https://speedranger.github.io/agent-qa-black-box/ph-thumbnail.png
 - Gallery 1: https://speedranger.github.io/agent-qa-black-box/ph-gallery-1-app.png
 - Gallery 2: https://speedranger.github.io/agent-qa-black-box/ph-gallery-2-regression-pack.png
@@ -24,8 +26,8 @@
 ## Product Hunt
 
 - Status: not submitted.
-- Blocker: Product Hunt submission still requires interactive logged-in
-  browser/account action when automated/headless flow hits security checks.
+- Blocker: Product Hunt submission redirects to login and requires interactive
+  logged-in browser/account action.
 
 ## Revenue
 

@@ -28,8 +28,10 @@ to hand the next attempt to Codex, Claude Code, Cursor, or a human reviewer.
 - `.github/ISSUE_TEMPLATE/agent_run_autopsy.yml` - public-safe request form
 - `sample-agent-autopsy.md` - example output
 - `product-hunt-launch-assets.md` - Product Hunt launch copy and replies
+- `product-hunt-submit-handoff-2026-06-04.md` - submit fields and blocker
 - `buyer-outreach-packet.md` - public-safe outreach copy
 - `payment-delivery-handoff.md` - paid request and evidence rules
+- `revenue-sprint-2026-06-04.md` - concrete public targets and slot links
 - `launch-status.json` - public launch and proof gates
 - `launch-ledger.md` - launch state and revenue slots
 - `llms.txt` - machine-readable summary
