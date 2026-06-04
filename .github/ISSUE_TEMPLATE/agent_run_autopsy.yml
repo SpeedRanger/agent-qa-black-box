@@ -41,11 +41,36 @@ body:
       description: Paste the exported Agent QA Black Box packet if available.
     validations:
       required: false
+  - type: dropdown
+    id: payment_handoff
+    attributes:
+      label: Payment handoff preference
+      description: Do not include payment details here. This only tells us which private handoff you prefer after scope-fit confirmation.
+      options:
+        - Invoice after scope-fit confirmation
+        - Checkout link after scope-fit confirmation
+        - Buyer-approved private channel after scope-fit confirmation
+        - Not reserving a paid slot yet
+    validations:
+      required: true
+  - type: dropdown
+    id: delivery_window
+    attributes:
+      label: Desired delivery window
+      description: Launch-sprint slots target delivery within 24 hours after payment evidence and scope-fit confirmation.
+      options:
+        - Launch sprint: within 24 hours after payment evidence
+        - Standard: within 2-3 days
+        - Exploratory: feedback only, no paid delivery yet
+    validations:
+      required: true
   - type: checkboxes
     id: safety
     attributes:
       label: Public-safety confirmation
       options:
+        - label: I understand this is a `$19` public/redacted autopsy slot only if scope-fit is confirmed and payment evidence exists.
+          required: true
         - label: This request contains only public or redacted information.
           required: true
         - label: This request contains no secrets, tokens, private repos, private logs, customer data, private analytics, or payment details.

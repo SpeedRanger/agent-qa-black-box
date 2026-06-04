@@ -12,9 +12,11 @@
    - public context URL, if available
    - redacted agent run, failure, or diff summary
    - generated Agent QA packet, if available
+   - payment handoff preference, without payment details
+   - delivery-window preference
 3. Seller confirms the request is public-safe and scope-fit.
 4. Seller and buyer move payment and private delivery to a buyer-approved
-   private channel.
+   private channel. Buyer pays only after scope-fit confirmation.
 5. Seller delivers:
    - likely failure modes
    - required regression checks
@@ -22,6 +24,13 @@
    - rollback note
    - next prompt
 6. Revenue is counted only after receipt/export/invoice evidence exists.
+
+## Launch Sprint SLA
+
+Accepted launch-sprint slots target delivery within `24 hours` after both:
+
+- payment evidence exists
+- the public/redacted request is confirmed scope-fit
 
 ## What Counts As Paid
 
@@ -47,6 +56,7 @@ Included:
 - one intended outcome
 - one autopsy packet
 - one next prompt
+- launch-sprint delivery target after payment evidence and scope-fit
 
 Not included:
 

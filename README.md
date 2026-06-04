@@ -28,6 +28,7 @@ to hand the next attempt to Codex, Claude Code, Cursor, or a human reviewer.
 - `.github/ISSUE_TEMPLATE/agent_run_autopsy.yml` - public-safe request form
 - `sample-agent-autopsy.md` - example output
 - `failure-mode-catalog.md` - public taxonomy for the autopsy service
+- `reserve-slot.md` - public buyer reservation and SLA note
 - `product-hunt-launch-assets.md` - Product Hunt launch copy and replies
 - `product-hunt-submit-handoff-2026-06-04.md` - submit fields and blocker
 - `buyer-outreach-packet.md` - public-safe outreach copy
@@ -43,6 +44,9 @@ to hand the next attempt to Codex, Claude Code, Cursor, or a human reviewer.
 The first 24h paid product is a `$19` agent-run autopsy for one public or
 redacted failed agent run. One paid autopsy clears the `$10` target before fees
 only when receipt/export/invoice evidence exists.
+
+Accepted launch-sprint slots target delivery within 24 hours after scope-fit
+confirmation and payment evidence.
 
 The buyer sends a public/redacted run and receives:
 
