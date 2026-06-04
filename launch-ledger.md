@@ -24,6 +24,7 @@
 - Gallery 2: https://speedranger.github.io/agent-qa-black-box/ph-gallery-2-regression-pack.png
 - Failure-mode catalog: https://speedranger.github.io/agent-qa-black-box/failure-mode-catalog.md
 - Reserve slot: https://speedranger.github.io/agent-qa-black-box/reserve-slot.md
+- Launch-day buyer packet: https://speedranger.github.io/agent-qa-black-box/launch-day-buyer-packet.md
 
 ## Launch Surface Updates
 
@@ -39,6 +40,8 @@
 - 2026-06-04: added public-safe reservation fields to the GitHub issue template
   and a reserve-slot page with payment handoff options plus 24h delivery target
   after payment evidence and scope-fit confirmation.
+- 2026-06-04: added a launch-day buyer packet with the buyer problem, `$19`
+  deliverables, example input/output, reservation path, and proof boundary.
 
 ## Product Hunt
 

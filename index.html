@@ -212,7 +212,7 @@
     <div class="intro">
       <h2>Failure-mode catalog</h2>
       <p>The autopsy is not a generic summary. It checks for repeated AI-agent failure modes: proofless done, surface drift, success-shaped fallbacks, repeated scars, context loops, and fake test confidence.</p>
-      <a href="failure-mode-catalog.md">Read the public catalog</a> · <a href="reserve-slot.md">Reserve a slot</a>
+      <a href="failure-mode-catalog.md">Read the public catalog</a> · <a href="launch-day-buyer-packet.md">Buyer packet</a> · <a href="reserve-slot.md">Reserve a slot</a>
     </div>
     <div class="modes" aria-label="Agent failure modes">
       <div class="mode"><b>Proofless done</b><span>No reproducible command, screenshot, or test proves the claim.</span></div>
@@ -312,6 +312,7 @@ Previous rollback note said not to touch auth for this route.</textarea>
         "",
         "Paste a public/redacted failed run and it returns the regression checks, guardrails, rollback note, and next prompt.",
         "Live tool: https://speedranger.github.io/agent-qa-black-box/",
+        "Buyer packet: https://speedranger.github.io/agent-qa-black-box/launch-day-buyer-packet.md",
         "Reserve a $19 public-safe autopsy slot: https://github.com/SpeedRanger/agent-qa-black-box/issues/new?template=agent_run_autopsy.yml"
       ].join("\n");
       await navigator.clipboard.writeText(text);

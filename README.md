@@ -29,6 +29,7 @@ to hand the next attempt to Codex, Claude Code, Cursor, or a human reviewer.
 - `sample-agent-autopsy.md` - example output
 - `failure-mode-catalog.md` - public taxonomy for the autopsy service
 - `reserve-slot.md` - public buyer reservation and SLA note
+- `launch-day-buyer-packet.md` - buyer-facing offer, example, and proof rules
 - `product-hunt-launch-assets.md` - Product Hunt launch copy and replies
 - `product-hunt-submit-handoff-2026-06-04.md` - submit fields and blocker
 - `buyer-outreach-packet.md` - public-safe outreach copy
