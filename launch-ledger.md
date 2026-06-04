@@ -29,6 +29,9 @@
   microcopy and a copy-ready outreach blurb. GitHub Pages workflow completed
   successfully, and the live site returned `Public outreach blurb`, `How payment
   works`, `copyOutreach`, and `What counts`.
+- 2026-06-04: updated public launch issue #1 with matching `What ships`, `How
+  payment works`, public outreach blurb, and proof-boundary copy. Verified via
+  GitHub CLI after edit.
 
 ## Product Hunt
 
