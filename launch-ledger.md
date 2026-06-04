@@ -7,7 +7,7 @@
 
 ## Current Gates
 
-- Public site current: missing until GitHub Pages publish is verified.
+- Public site current: done, verified 2026-06-04.
 - Product Hunt listing: missing.
 - Product Hunt leaderboard proof: missing.
 - Verified revenue over `$10`: missing.
@@ -16,6 +16,7 @@
 
 - Site: https://speedranger.github.io/agent-qa-black-box/
 - Request form: https://github.com/SpeedRanger/agent-qa-black-box/issues/new?template=agent_run_autopsy.yml
+- Public launch issue: https://github.com/SpeedRanger/agent-qa-black-box/issues/1
 - Product Hunt thumbnail: https://speedranger.github.io/agent-qa-black-box/ph-thumbnail.png
 - Gallery 1: https://speedranger.github.io/agent-qa-black-box/ph-gallery-1-app.png
 - Gallery 2: https://speedranger.github.io/agent-qa-black-box/ph-gallery-2-regression-pack.png
@@ -41,9 +42,7 @@ invoice evidence exists.
 
 ## Next Actions
 
-1. Publish GitHub Pages.
-2. Verify live site, request form, status JSON, and media assets.
-3. Create public launch issue for five `$19` autopsy slots.
-4. Submit Product Hunt from an interactive logged-in browser.
-5. Use public-safe outreach in coding-agent reliability threads.
-6. Record only receipt/export/invoice references as revenue evidence.
+1. Submit Product Hunt from an interactive logged-in browser.
+2. Use public-safe outreach in coding-agent reliability threads.
+3. Route paid requests through issue #1 or the public request form.
+4. Record only receipt/export/invoice references as revenue evidence.

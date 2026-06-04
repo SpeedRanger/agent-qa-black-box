@@ -29,12 +29,13 @@
     "ph-gallery-2-regression-pack.png"
   ],
   "completion_gates": {
-    "public_site_current": false,
+    "public_site_current": true,
     "product_hunt_listing_url": false,
     "product_hunt_rank_proof": false,
     "verified_revenue_over_10_usd": false
   },
   "public_request_form_url": "https://github.com/SpeedRanger/agent-qa-black-box/issues/new?template=agent_run_autopsy.yml",
+  "public_launch_issue_url": "https://github.com/SpeedRanger/agent-qa-black-box/issues/1",
   "no_claims_until_proven": [
     "Product Hunt listing",
     "Product Hunt leaderboard rank",
