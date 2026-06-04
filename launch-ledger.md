@@ -5,6 +5,7 @@
 > Public site: https://speedranger.github.io/agent-qa-black-box/
 > Public repo: https://github.com/SpeedRanger/agent-qa-black-box
 > Public release: https://github.com/SpeedRanger/agent-qa-black-box/releases/tag/v0.1.0
+> Repo topics: ai-agents, ai-code-review, claude-code, codex, coding-agents, cursor, developer-tools, product-hunt, qa, regression-testing
 
 ## Current Gates
 
@@ -47,6 +48,10 @@
 - 2026-06-04: published GitHub release `v0.1.0` as the public launch artifact.
   Verified release is not draft/prerelease and links to the live app, buyer
   packet, reservation form, proof boundary, and public-safety boundary.
+- 2026-06-04: set public repo topics for discoverability: `ai-agents`,
+  `ai-code-review`, `claude-code`, `codex`, `coding-agents`, `cursor`,
+  `developer-tools`, `product-hunt`, `qa`, and `regression-testing`; normalized
+  repo homepage URL casing.
 
 ## Product Hunt
 
