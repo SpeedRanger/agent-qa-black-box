@@ -1,0 +1,52 @@
+name: Agent-run autopsy request
+description: Request a public-safe $19 Agent QA Black Box autopsy.
+title: "Agent autopsy: <repo/product/task>"
+labels:
+  - agent-autopsy
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Public or redacted inputs only. Do not include secrets, tokens, private
+        repositories, private logs, private analytics, customer data, payment
+        details, or anything under NDA in this public issue.
+  - type: input
+    id: public_context
+    attributes:
+      label: Public context URL
+      description: Public repo, issue, docs page, product URL, or public thread if available.
+      placeholder: https://github.com/example/repo/issues/123
+    validations:
+      required: false
+  - type: textarea
+    id: intended_outcome
+    attributes:
+      label: Intended outcome
+      description: What was the agent supposed to do?
+      placeholder: Fix checkout redirect without touching auth, pricing, or database schema.
+    validations:
+      required: true
+  - type: textarea
+    id: redacted_run
+    attributes:
+      label: Redacted agent run, failure, or diff summary
+      description: Paste only public/redacted commands, errors, transcript lines, or changed-file summaries.
+      placeholder: Agent claimed done, changed middleware, skipped tests, payment link now silently fails.
+    validations:
+      required: true
+  - type: textarea
+    id: generated_packet
+    attributes:
+      label: Generated Agent QA packet
+      description: Paste the exported Agent QA Black Box packet if available.
+    validations:
+      required: false
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Public-safety confirmation
+      options:
+        - label: This request contains only public or redacted information.
+          required: true
+        - label: This request contains no secrets, tokens, private repos, private logs, customer data, private analytics, or payment details.
+          required: true

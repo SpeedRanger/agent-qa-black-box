@@ -1,0 +1,53 @@
+{
+  "product": "Agent QA Black Box",
+  "status_date": "2026-06-04",
+  "public_url": "https://speedranger.github.io/agent-qa-black-box/",
+  "repo_url": "https://github.com/SpeedRanger/agent-qa-black-box",
+  "positioning": "Turns failed AI agent runs into regression packs.",
+  "offer": {
+    "name": "public/redacted agent-run autopsy",
+    "price_usd": 19,
+    "revenue_goal_usd": 10,
+    "unit_goal": 1,
+    "proof_required": "receipt, checkout export, or paid invoice"
+  },
+  "public_assets": [
+    "index.html",
+    "README.md",
+    "llms.txt",
+    "AGENTS.md",
+    "SECURITY.md",
+    "sample-agent-autopsy.md",
+    "product-hunt-launch-assets.md",
+    "buyer-outreach-packet.md",
+    "payment-delivery-handoff.md",
+    "launch-ledger.md",
+    "robots.txt",
+    "sitemap.xml",
+    "ph-thumbnail.png",
+    "ph-gallery-1-app.png",
+    "ph-gallery-2-regression-pack.png"
+  ],
+  "completion_gates": {
+    "public_site_current": false,
+    "product_hunt_listing_url": false,
+    "product_hunt_rank_proof": false,
+    "verified_revenue_over_10_usd": false
+  },
+  "public_request_form_url": "https://github.com/SpeedRanger/agent-qa-black-box/issues/new?template=agent_run_autopsy.yml",
+  "no_claims_until_proven": [
+    "Product Hunt listing",
+    "Product Hunt leaderboard rank",
+    "paid customer",
+    "first-24h revenue",
+    "agent reliability improvement"
+  ],
+  "privacy_boundary": [
+    "No private logs",
+    "No private repos",
+    "No secrets",
+    "No tokens",
+    "No customer data",
+    "No payment details in public issues"
+  ]
+}

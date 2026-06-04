@@ -1,0 +1,16 @@
+# Agent QA Black Box
+
+Agent QA Black Box turns a failed AI coding/session run into a regression pack:
+likely failure modes, required checks, guardrails, rollback notes, and a next
+prompt.
+
+Public URL: https://speedranger.github.io/agent-qa-black-box/
+Repository: https://github.com/SpeedRanger/agent-qa-black-box
+Request form: https://github.com/SpeedRanger/agent-qa-black-box/issues/new?template=agent_run_autopsy.yml
+
+Use public or redacted inputs only. Do not include secrets, tokens, private
+repositories, private logs, customer data, private analytics, or payment
+details.
+
+Paid offer: $19 public/redacted agent-run autopsy. Revenue is counted only with
+receipt, checkout export, paid invoice, or equivalent payment evidence.

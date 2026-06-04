@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent QA Black Box</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #18201b;
+      --muted: #607066;
+      --paper: #f6f3ea;
+      --panel: #fffdf6;
+      --line: #c9c2ae;
+      --accent: #0f7b55;
+      --hot: #b8332a;
+      --cool: #235c91;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Aptos", "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+    header, main { width: min(1180px, calc(100vw - 32px)); margin: 0 auto; }
+    header { padding: 28px 0 16px; display: flex; justify-content: space-between; gap: 20px; align-items: end; }
+    h1 { margin: 0; font-size: clamp(32px, 5vw, 64px); line-height: 0.96; letter-spacing: 0; max-width: 760px; }
+    .sub { margin: 12px 0 0; max-width: 700px; color: var(--muted); font-size: 17px; }
+    .stamp { border: 1px solid var(--line); padding: 10px 12px; background: #eee6d2; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+    .navlinks { display: flex; flex-direction: column; gap: 8px; align-items: stretch; }
+    .navlinks a {
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      background: #eee6d2;
+      padding: 10px 12px;
+      text-decoration: none;
+      font-weight: 900;
+      text-align: center;
+    }
+    .grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr); gap: 18px; padding: 14px 0 32px; }
+    section { background: var(--panel); border: 1px solid var(--line); }
+    .offer {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto 14px;
+      border: 1px solid var(--ink);
+      background: #e7c67a;
+      padding: 13px 16px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+    }
+    .offer b { display: block; font-size: 18px; }
+    .offer span { color: #3d321e; }
+    .offer a {
+      background: var(--ink);
+      color: #fffdf6;
+      text-decoration: none;
+      padding: 11px 14px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .pane { padding: 18px; }
+    label { display: block; font-weight: 800; margin-bottom: 8px; }
+    textarea, input {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: #fffaf0;
+      color: var(--ink);
+      padding: 12px;
+      font: inherit;
+      resize: vertical;
+    }
+    textarea { min-height: 360px; }
+    input { margin-bottom: 12px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    button {
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: #fffdf6;
+      padding: 10px 14px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    button.secondary { background: transparent; color: var(--ink); }
+    button:focus-visible, textarea:focus-visible, input:focus-visible { outline: 3px solid #e2b84b; outline-offset: 2px; }
+    .score { display: grid; grid-template-columns: 120px 1fr; gap: 14px; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 14px; margin-bottom: 14px; }
+    .dial { aspect-ratio: 1; border: 2px solid var(--ink); display: grid; place-items: center; font-size: 42px; font-weight: 900; background: #f1d28a; }
+    .dial.high { background: #e78b80; }
+    .dial.low { background: #9ed8b7; }
+    .result h2 { margin: 0 0 6px; font-size: 22px; }
+    .block { border-top: 1px solid var(--line); padding: 13px 0; }
+    .block h3 { margin: 0 0 8px; font-size: 14px; text-transform: uppercase; letter-spacing: .08em; color: var(--cool); }
+    ul { margin: 0; padding-left: 18px; }
+    li + li { margin-top: 6px; }
+    pre { white-space: pre-wrap; background: #1e251f; color: #f7f4ea; padding: 14px; margin: 0; overflow: auto; }
+    @media (max-width: 860px) {
+      header { display: block; }
+      .stamp { display: inline-block; margin-top: 14px; white-space: normal; }
+      .navlinks { margin-top: 14px; align-items: start; }
+      .offer { grid-template-columns: 1fr; }
+      .offer a { justify-self: start; white-space: normal; }
+      .grid { grid-template-columns: 1fr; }
+      textarea { min-height: 280px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Turn an agent failure into a regression pack.</h1>
+      <p class="sub">Paste the messy transcript, failed command, or broken diff. Get the missing checks, guardrails, rollback note, and next prompt before the same bug comes back.</p>
+    </div>
+    <div class="navlinks">
+      <a href="https://github.com/SpeedRanger/agent-qa-black-box/issues/new?template=agent_run_autopsy.yml">Request $19 autopsy</a>
+      <div class="stamp">Public/redacted inputs only</div>
+    </div>
+  </header>
+  <div class="offer">
+    <div>
+      <b>Launch sprint: five $19 agent-run autopsy slots.</b>
+      <span>Send a public/redacted failed agent run and get the regression checks, guardrails, rollback note, and next prompt. One paid slot clears the $10 first-24h proof gate only with receipt/export/invoice evidence.</span>
+    </div>
+    <a href="https://github.com/SpeedRanger/agent-qa-black-box/issues/new?template=agent_run_autopsy.yml">Claim a slot</a>
+  </div>
+  <main class="grid">
+    <section class="pane">
+      <label for="goal">Intended outcome</label>
+      <input id="goal" value="Fix checkout route without changing auth, pricing, or database schema.">
+      <label for="trace">Agent run / error trace</label>
+      <textarea id="trace">Agent said the checkout bug was fixed, but no test was run.
+Changed auth middleware while debugging a Stripe redirect.
+Added a broad catch that returns success when createCheckoutSession fails.
+The page now loads, but payment links silently fail in production.
+Previous rollback note said not to touch auth for this route.</textarea>
+      <div class="actions">
+        <button id="analyze">Analyze failure</button>
+        <button class="secondary" id="load">Load sample</button>
+        <button class="secondary" id="copy">Copy Markdown</button>
+      </div>
+    </section>
+    <section class="pane result" aria-live="polite">
+      <div class="score">
+        <div class="dial high" id="risk">82</div>
+        <div>
+          <h2 id="verdict">High regression risk</h2>
+          <p class="sub" id="summary">The run changed nearby critical behavior, hid a failure, and did not prove the intended path.</p>
+        </div>
+      </div>
+      <div id="report"></div>
+    </section>
+  </main>
+  <script>
+    const sample = document.getElementById("trace").value;
+    const checks = [
+      ["no test|not run|untested", "Add a failing regression test before another patch attempt."],
+      ["auth|permission|middleware", "Fence auth and permission code unless the task explicitly targets it."],
+      ["broad catch|catch|silent|success", "Fail loudly on payment/session errors; do not return success-shaped defaults."],
+      ["rollback|previous|again|came back", "Attach the previous rollback note to the next prompt as a hard constraint."],
+      ["production|prod|customer", "Add a smoke check that proves production-like payment behavior."],
+      ["schema|migration|database", "Block schema changes unless the task includes a migration plan."]
+    ];
+    function lines(text) { return text.split(/\n+/).map(s => s.trim()).filter(Boolean); }
+    function analyze() {
+      const text = document.getElementById("trace").value;
+      const goal = document.getElementById("goal").value.trim();
+      const lower = text.toLowerCase();
+      const hits = checks.filter(([pattern]) => new RegExp(pattern).test(lower)).map(([, out]) => out);
+      const risk = Math.min(95, 35 + hits.length * 10 + (lines(text).length > 6 ? 8 : 0));
+      const riskEl = document.getElementById("risk");
+      riskEl.textContent = risk;
+      riskEl.className = "dial " + (risk > 70 ? "high" : risk < 45 ? "low" : "");
+      document.getElementById("verdict").textContent = risk > 70 ? "High regression risk" : risk > 45 ? "Needs review" : "Contained failure";
+      document.getElementById("summary").textContent = hits.length ? "The next run needs explicit proof gates before changing code again." : "Few obvious risk flags were detected; still require a concrete verification step.";
+      const root = [
+        "The agent optimized for a passing-looking outcome instead of the stated outcome.",
+        "The changed surface expanded from the target path into adjacent behavior.",
+        "Verification was claimed or implied without a reproducible proof step."
+      ];
+      const tests = hits.length ? hits : ["Add one failing test for the intended outcome.", "Run the narrowest existing test that covers the edited path."];
+      const prompt = `Goal: ${goal}\n\nConstraints:\n- Do not change auth, pricing, schema, or unrelated routes unless the failing test proves they are the root cause.\n- First write or identify the failing regression check.\n- Patch the smallest primary path.\n- Run the check and report exact command output.\n- Include rollback note for every changed file.`;
+      const md = [
+        "## Agent QA Black Box",
+        "",
+        "Offer: $19 public/redacted agent-run autopsy.",
+        "Request path: https://github.com/SpeedRanger/agent-qa-black-box/issues/new?template=agent_run_autopsy.yml",
+        "Safety: public or redacted inputs only. No secrets, private repos, private logs, customer data, tokens, or payment details in public issues.",
+        "",
+        `Risk score: ${risk}`,
+        "",
+        "### Likely root causes",
+        ...root.map(x => `- ${x}`),
+        "",
+        "### Required checks",
+        ...tests.map(x => `- ${x}`),
+        "",
+        "### Next prompt",
+        "```text",
+        prompt,
+        "```"
+      ].join("\n");
+      window.currentMarkdown = md;
+      document.getElementById("report").innerHTML = `
+        <div class="block"><h3>Likely root causes</h3><ul>${root.map(x => `<li>${x}</li>`).join("")}</ul></div>
+        <div class="block"><h3>Required checks</h3><ul>${tests.map(x => `<li>${x}</li>`).join("")}</ul></div>
+        <div class="block"><h3>Next prompt</h3><pre>${prompt}</pre></div>`;
+    }
+    document.getElementById("analyze").addEventListener("click", analyze);
+    document.getElementById("load").addEventListener("click", () => { document.getElementById("trace").value = sample; analyze(); });
+    document.getElementById("copy").addEventListener("click", async () => navigator.clipboard.writeText(window.currentMarkdown || ""));
+    analyze();
+  </script>
+</body>
+</html>
