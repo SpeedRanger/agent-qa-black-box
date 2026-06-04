@@ -8,6 +8,7 @@ Live target:
 
 - Site: https://speedranger.github.io/agent-qa-black-box/
 - Repo: https://github.com/SpeedRanger/agent-qa-black-box
+- Release: https://github.com/SpeedRanger/agent-qa-black-box/releases/tag/v0.1.0
 - Public request form: https://github.com/SpeedRanger/agent-qa-black-box/issues/new?template=agent_run_autopsy.yml
 - Public launch issue: https://github.com/SpeedRanger/agent-qa-black-box/issues/1
 

@@ -4,6 +4,7 @@
 > Product: Agent QA Black Box
 > Public site: https://speedranger.github.io/agent-qa-black-box/
 > Public repo: https://github.com/SpeedRanger/agent-qa-black-box
+> Public release: https://github.com/SpeedRanger/agent-qa-black-box/releases/tag/v0.1.0
 
 ## Current Gates
 
@@ -15,6 +16,7 @@
 ## Published Assets
 
 - Site: https://speedranger.github.io/agent-qa-black-box/
+- Release: https://github.com/SpeedRanger/agent-qa-black-box/releases/tag/v0.1.0
 - Request form: https://github.com/SpeedRanger/agent-qa-black-box/issues/new?template=agent_run_autopsy.yml
 - Public launch issue: https://github.com/SpeedRanger/agent-qa-black-box/issues/1
 - Product Hunt submit handoff: https://speedranger.github.io/agent-qa-black-box/product-hunt-submit-handoff-2026-06-04.md
@@ -42,6 +44,9 @@
   after payment evidence and scope-fit confirmation.
 - 2026-06-04: added a launch-day buyer packet with the buyer problem, `$19`
   deliverables, example input/output, reservation path, and proof boundary.
+- 2026-06-04: published GitHub release `v0.1.0` as the public launch artifact.
+  Verified release is not draft/prerelease and links to the live app, buyer
+  packet, reservation form, proof boundary, and public-safety boundary.
 
 ## Product Hunt
 
