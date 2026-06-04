@@ -23,6 +23,13 @@
 - Gallery 1: https://speedranger.github.io/agent-qa-black-box/ph-gallery-1-app.png
 - Gallery 2: https://speedranger.github.io/agent-qa-black-box/ph-gallery-2-regression-pack.png
 
+## Launch Surface Updates
+
+- 2026-06-04: published public repo commit `16a2dcd` with clearer payment/proof
+  microcopy and a copy-ready outreach blurb. GitHub Pages workflow completed
+  successfully, and the live site returned `Public outreach blurb`, `How payment
+  works`, `copyOutreach`, and `What counts`.
+
 ## Product Hunt
 
 - Status: not submitted.
