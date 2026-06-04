@@ -150,6 +150,16 @@
     .result h2 { margin: 0 0 6px; font-size: 22px; }
     .block { border-top: 1px solid var(--line); padding: 13px 0; }
     .block h3 { margin: 0 0 8px; font-size: 14px; text-transform: uppercase; letter-spacing: .08em; color: var(--cool); }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .chip {
+      border: 1px solid var(--ink);
+      background: #fffaf0;
+      padding: 6px 8px;
+      font-size: 13px;
+      font-weight: 900;
+    }
+    .chip.hot { background: #e78b80; }
+    .chip.warn { background: #f1d28a; }
     ul { margin: 0; padding-left: 18px; }
     li + li { margin-top: 6px; }
     pre { white-space: pre-wrap; background: #1e251f; color: #f7f4ea; padding: 14px; margin: 0; overflow: auto; }
@@ -235,6 +245,7 @@ Previous rollback note said not to touch auth for this route.</textarea>
         <button id="analyze">Analyze failure</button>
         <button class="secondary" id="load">Load sample</button>
         <button class="secondary" id="copy">Copy Markdown</button>
+        <button class="secondary" id="copyReserve">Copy reservation</button>
       </div>
     </section>
     <section class="pane result" aria-live="polite">
@@ -250,32 +261,73 @@ Previous rollback note said not to touch auth for this route.</textarea>
   </main>
   <script>
     const sample = document.getElementById("trace").value;
-    const checks = [
-      ["no test|not run|untested", "Add a failing regression test before another patch attempt."],
-      ["auth|permission|middleware", "Fence auth and permission code unless the task explicitly targets it."],
-      ["broad catch|catch|silent|success", "Fail loudly on payment/session errors; do not return success-shaped defaults."],
-      ["rollback|previous|again|came back", "Attach the previous rollback note to the next prompt as a hard constraint."],
-      ["production|prod|customer", "Add a smoke check that proves production-like payment behavior."],
-      ["schema|migration|database", "Block schema changes unless the task includes a migration plan."]
+    const failureModes = [
+      {
+        pattern: "no test|not run|untested|skipped test|without proof|claimed done",
+        name: "Proofless done",
+        root: "The agent reported completion without a reproducible proof artifact.",
+        test: "Add a failing regression test before another patch attempt.",
+        guardrail: "No done claim without exact command output, screenshot proof, or test result."
+      },
+      {
+        pattern: "auth|permission|middleware|pricing|route|schema|migration|database",
+        name: "Surface drift",
+        root: "The changed surface expanded beyond the intended task boundary.",
+        test: "Verify unrelated auth, pricing, schema, and routing surfaces were not changed.",
+        guardrail: "Fence adjacent systems unless the failing test proves they are the root cause."
+      },
+      {
+        pattern: "broad catch|catch|silent|success|fallback|default|mock",
+        name: "Success-shaped fallback",
+        root: "The run hid a real failure behind fallback behavior or broad error handling.",
+        test: "Add a negative-path check that proves the failure is loud and observable.",
+        guardrail: "Delete success-shaped fallbacks; payment/session errors must fail loudly."
+      },
+      {
+        pattern: "rollback|previous|again|came back|repeat|reverted",
+        name: "Repeated scar",
+        root: "A prior rollback or known-bad pattern was not carried into the next run.",
+        test: "Attach the previous rollback note and verify the known-bad pattern is absent.",
+        guardrail: "Promote the scar into the prompt, docs, or checklist before rerunning an agent."
+      },
+      {
+        pattern: "production|prod|customer|live|deploy|checkout|stripe|payment",
+        name: "Production gap",
+        root: "The local-looking fix did not prove the production-like path.",
+        test: "Add a smoke check that proves production-like payment or checkout behavior.",
+        guardrail: "Require a production-like proof step for any revenue, auth, or checkout path."
+      },
+      {
+        pattern: "loop|repeated|context|grep|cat|read|stale|drift",
+        name: "Context loop",
+        root: "The session spent effort on broad or stale context instead of shrinking the task.",
+        test: "Define the smallest useful file set and one stop condition before another run.",
+        guardrail: "Stop repeated exploration after one failed attempt and write a fresh handoff."
+      }
     ];
+    function esc(value) {
+      return String(value).replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" }[ch]));
+    }
     function lines(text) { return text.split(/\n+/).map(s => s.trim()).filter(Boolean); }
     function analyze() {
       const text = document.getElementById("trace").value;
       const goal = document.getElementById("goal").value.trim();
       const lower = text.toLowerCase();
-      const hits = checks.filter(([pattern]) => new RegExp(pattern).test(lower)).map(([, out]) => out);
-      const risk = Math.min(95, 35 + hits.length * 10 + (lines(text).length > 6 ? 8 : 0));
+      const matched = failureModes.filter(({ pattern }) => new RegExp(pattern).test(lower));
+      const risk = Math.min(95, 32 + matched.length * 10 + (lines(text).length > 6 ? 8 : 0));
       const riskEl = document.getElementById("risk");
       riskEl.textContent = risk;
       riskEl.className = "dial " + (risk > 70 ? "high" : risk < 45 ? "low" : "");
       document.getElementById("verdict").textContent = risk > 70 ? "High regression risk" : risk > 45 ? "Needs review" : "Contained failure";
-      document.getElementById("summary").textContent = hits.length ? "The next run needs explicit proof gates before changing code again." : "Few obvious risk flags were detected; still require a concrete verification step.";
-      const root = [
+      document.getElementById("summary").textContent = matched.length ? "The next run needs explicit proof gates before changing code again." : "Few obvious risk flags were detected; still require a concrete verification step.";
+      const root = matched.length ? matched.map(mode => mode.root) : [
         "The agent optimized for a passing-looking outcome instead of the stated outcome.",
         "The changed surface expanded from the target path into adjacent behavior.",
         "Verification was claimed or implied without a reproducible proof step."
       ];
-      const tests = hits.length ? hits : ["Add one failing test for the intended outcome.", "Run the narrowest existing test that covers the edited path."];
+      const tests = matched.length ? matched.map(mode => mode.test) : ["Add one failing test for the intended outcome.", "Run the narrowest existing test that covers the edited path."];
+      const guardrails = matched.length ? matched.map(mode => mode.guardrail) : ["Do not change unrelated surfaces.", "Require exact proof before accepting done."];
+      const modeNames = matched.length ? matched.map(mode => mode.name) : ["Unclassified"];
       const prompt = `Goal: ${goal}\n\nConstraints:\n- Do not change auth, pricing, schema, or unrelated routes unless the failing test proves they are the root cause.\n- First write or identify the failing regression check.\n- Patch the smallest primary path.\n- Run the check and report exact command output.\n- Include rollback note for every changed file.`;
       const md = [
         "## Agent QA Black Box",
@@ -286,11 +338,17 @@ Previous rollback note said not to touch auth for this route.</textarea>
         "",
         `Risk score: ${risk}`,
         "",
+        "### Failure modes",
+        ...modeNames.map(x => `- ${x}`),
+        "",
         "### Likely root causes",
         ...root.map(x => `- ${x}`),
         "",
         "### Required checks",
         ...tests.map(x => `- ${x}`),
+        "",
+        "### Guardrails",
+        ...guardrails.map(x => `- ${x}`),
         "",
         "### Next prompt",
         "```text",
@@ -298,14 +356,39 @@ Previous rollback note said not to touch auth for this route.</textarea>
         "```"
       ].join("\n");
       window.currentMarkdown = md;
+      window.currentReservation = [
+        "Agent QA Black Box reservation",
+        "",
+        "Intended outcome:",
+        goal || "(add intended outcome)",
+        "",
+        "Detected failure modes:",
+        ...modeNames.map(x => `- ${x}`),
+        "",
+        "Generated packet:",
+        md,
+        "",
+        "Payment handoff preference:",
+        "Invoice or checkout link after scope-fit confirmation.",
+        "",
+        "Delivery window:",
+        "Launch sprint: within 24 hours after payment evidence.",
+        "",
+        "Public-safety confirmation:",
+        "This request contains only public/redacted information and no secrets, tokens, private repos, private logs, customer data, private analytics, or payment details."
+      ].join("\n");
+      const chips = modeNames.map((name, index) => `<span class="chip ${risk > 70 && index === 0 ? "hot" : "warn"}">${esc(name)}</span>`).join("");
       document.getElementById("report").innerHTML = `
+        <div class="block"><h3>Failure modes</h3><div class="chips">${chips}</div></div>
         <div class="block"><h3>Likely root causes</h3><ul>${root.map(x => `<li>${x}</li>`).join("")}</ul></div>
         <div class="block"><h3>Required checks</h3><ul>${tests.map(x => `<li>${x}</li>`).join("")}</ul></div>
-        <div class="block"><h3>Next prompt</h3><pre>${prompt}</pre></div>`;
+        <div class="block"><h3>Guardrails</h3><ul>${guardrails.map(x => `<li>${x}</li>`).join("")}</ul></div>
+        <div class="block"><h3>Next prompt</h3><pre>${esc(prompt)}</pre></div>`;
     }
     document.getElementById("analyze").addEventListener("click", analyze);
     document.getElementById("load").addEventListener("click", () => { document.getElementById("trace").value = sample; analyze(); });
     document.getElementById("copy").addEventListener("click", async () => navigator.clipboard.writeText(window.currentMarkdown || ""));
+    document.getElementById("copyReserve").addEventListener("click", async () => navigator.clipboard.writeText(window.currentReservation || ""));
     document.getElementById("copyOutreach").addEventListener("click", async () => {
       const text = [
         "I built Agent QA Black Box for exactly this failure mode: when an AI coding agent says done, skips proof, and the same bug comes back.",
