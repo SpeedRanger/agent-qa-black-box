@@ -90,6 +90,35 @@
     }
     .launch-copy p { margin: 0; color: var(--muted); }
     .launch-copy button { white-space: nowrap; }
+    .catalog {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto 14px;
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 14px;
+      align-items: stretch;
+    }
+    .catalog .intro, .catalog .modes {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 14px 16px;
+    }
+    .catalog h2 { margin: 0 0 8px; font-size: 22px; }
+    .catalog p { margin: 0 0 12px; color: var(--muted); }
+    .catalog a { color: var(--ink); font-weight: 900; }
+    .modes {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .mode {
+      border: 1px solid var(--line);
+      background: #fffaf0;
+      padding: 10px;
+      min-height: 88px;
+    }
+    .mode b { display: block; color: var(--cool); }
+    .mode span { color: var(--muted); font-size: 14px; }
     .pane { padding: 18px; }
     label { display: block; font-weight: 800; margin-bottom: 8px; }
     textarea, input {
@@ -133,6 +162,8 @@
       .proof-strip { grid-template-columns: 1fr; }
       .launch-copy { grid-template-columns: 1fr; }
       .launch-copy button { justify-self: start; white-space: normal; }
+      .catalog { grid-template-columns: 1fr; }
+      .modes { grid-template-columns: 1fr; }
       .grid { grid-template-columns: 1fr; }
       textarea { min-height: 280px; }
     }
@@ -176,6 +207,19 @@
       <p>Copy this into a relevant Product Hunt, GitHub, HN, or Reddit reply when someone reports an AI coding-agent failure.</p>
     </div>
     <button class="secondary" id="copyOutreach">Copy outreach</button>
+  </div>
+  <div class="catalog">
+    <div class="intro">
+      <h2>Failure-mode catalog</h2>
+      <p>The autopsy is not a generic summary. It checks for repeated AI-agent failure modes: proofless done, surface drift, success-shaped fallbacks, repeated scars, context loops, and fake test confidence.</p>
+      <a href="failure-mode-catalog.md">Read the public catalog</a>
+    </div>
+    <div class="modes" aria-label="Agent failure modes">
+      <div class="mode"><b>Proofless done</b><span>No reproducible command, screenshot, or test proves the claim.</span></div>
+      <div class="mode"><b>Surface drift</b><span>The agent changes adjacent auth, schema, pricing, or routing.</span></div>
+      <div class="mode"><b>Silent fallback</b><span>Broad catch or fake success hides the real failure.</span></div>
+      <div class="mode"><b>Fake tests</b><span>Tests mock the thing under test or miss the real behavior.</span></div>
+    </div>
   </div>
   <main class="grid">
     <section class="pane">

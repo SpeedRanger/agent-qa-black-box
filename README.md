@@ -27,6 +27,7 @@ to hand the next attempt to Codex, Claude Code, Cursor, or a human reviewer.
 - `index.html` - static first-use app
 - `.github/ISSUE_TEMPLATE/agent_run_autopsy.yml` - public-safe request form
 - `sample-agent-autopsy.md` - example output
+- `failure-mode-catalog.md` - public taxonomy for the autopsy service
 - `product-hunt-launch-assets.md` - Product Hunt launch copy and replies
 - `product-hunt-submit-handoff-2026-06-04.md` - submit fields and blocker
 - `buyer-outreach-packet.md` - public-safe outreach copy

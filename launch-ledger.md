@@ -22,6 +22,7 @@
 - Product Hunt thumbnail: https://speedranger.github.io/agent-qa-black-box/ph-thumbnail.png
 - Gallery 1: https://speedranger.github.io/agent-qa-black-box/ph-gallery-1-app.png
 - Gallery 2: https://speedranger.github.io/agent-qa-black-box/ph-gallery-2-regression-pack.png
+- Failure-mode catalog: https://speedranger.github.io/agent-qa-black-box/failure-mode-catalog.md
 
 ## Launch Surface Updates
 
@@ -32,6 +33,8 @@
 - 2026-06-04: updated public launch issue #1 with matching `What ships`, `How
   payment works`, public outreach blurb, and proof-boundary copy. Verified via
   GitHub CLI after edit.
+- 2026-06-04: added a public failure-mode catalog and homepage trust section so
+  buyers can see the autopsy taxonomy before opening a paid request.
 
 ## Product Hunt
 
